@@ -1,3 +1,5 @@
+**This is an application that can automatically generate documentation for software projects hosted on GitHub.**
+
 GitHub MCP + CrewAI + Django Integration
 
 This project demonstrates how to:
@@ -89,5 +91,6 @@ Contributions are welcome! Please fork the repo and submit a pull request.
 📜 License
 
 This project is licensed under the MIT License
+
 
 
