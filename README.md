@@ -10,23 +10,6 @@ This project demonstrates how to:
 
 ⚡ Integrate CrewAI seamlessly with a Django application.
 
-📌 Table of Contents
-
-Overview
-
-Features
-
-Tech Stack
-
-Installation
-
-Usage
-
-Project Structure
-
-Contributing
-
-License
 
 🔎 Overview
 
@@ -106,4 +89,5 @@ Contributions are welcome! Please fork the repo and submit a pull request.
 📜 License
 
 This project is licensed under the MIT License
+
 
