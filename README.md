@@ -1,114 +1,82 @@
-﻿GitHub MCP Server Integration - Codebase Analysis
-Application Type
-This is an automated documentation generation system for GitHub-hosted software projects. The application combines multiple AI/automation technologies to create a powerful framework that can:
+This is an application that can automatically generate documentation for software projects hosted on GitHub.
 
-Automatically fetch GitHub repository data
-Generate comprehensive project documentation
-Manage multi-agent workflows for complex documentation tasks
-Provide a web interface through Django integration
+GitHub MCP + CrewAI + Django Integration
 
-Core Architecture
-The application follows a multi-layered architecture that integrates:
+This project demonstrates how to:
 
-MCP (Model Context Protocol) for standardized GitHub API interactions
-LangChain for tool orchestration and LLM integration
-CrewAI for multi-agent workflow management
-Django for web application framework and user interface
+🚀 Run and validate GitHub MCP Server commands locally to fetch repository data.
 
-Main Programming Languages and Frameworks
-Primary Technologies
+🛠️ Use LangChain to convert MCP commands into reusable tools.
 
-Python 3.10+ - Core programming language
-Django - Web application framework
-LangChain - LLM application framework and tool orchestration
-CrewAI - Multi-agent AI workflow management
-GitHub MCP Server - Model Context Protocol server for GitHub integration
+🤝 Build and manage a multi-agent Crew workflow.
 
-Framework Integration Pattern
-GitHub API ↔ MCP Server ↔ LangChain Tools ↔ CrewAI Agents ↔ Django Web App
-Key Directories and Their Purposes
-/crew/
+⚡ Integrate CrewAI seamlessly with a Django application.
 
-Purpose: Contains CrewAI workflow definitions and configurations
-Functionality: Houses multi-agent workflow scripts, agent definitions, and task orchestration logic
-Role: Manages the AI agents that collaborate to generate documentation
+🔎 Overview
 
-/django_app/
+This repository brings together GitHub MCP, LangChain, CrewAI, and Django to create a powerful framework for managing multi-agent workflows that interact with GitHub data.
 
-Purpose: Django web application integration
-Functionality: Web interface, models, views, templates, and Django-specific configurations
-Role: Provides user-facing interface for documentation generation and project management
+By turning MCP commands into reusable tools and connecting them to a CrewAI orchestration layer, you can automate workflows and integrate them directly into your Django applications.
 
-/mcp/
+✨ Features
 
-Purpose: GitHub MCP Server commands and integration logic
-Functionality: Contains MCP protocol implementations, GitHub API wrappers, and command definitions
-Role: Handles all GitHub repository data fetching and MCP protocol communication
+Local Validation: Run and test GitHub MCP Server commands on your machine.
 
-Important Configuration Files
-Core Configuration Files
+LangChain Integration: Transform MCP commands into modular, reusable tools.
 
-requirements.txt - Python dependencies and package versions
-settings.py (within django_app) - Django configuration including MCP tool endpoints
-manage.py - Django management script
+Multi-Agent Workflow: Build CrewAI-powered crews for automation and collaboration.
 
-Entry Point Scripts
+Django Compatibility: Integrate directly with Django for web applications.
 
-mcp_server.py - Local MCP server runner and validator
-run_crew.py - CrewAI workflow execution script
+🛠 Tech Stack
 
-Documentation
+Python 3.10+
 
-README.md - Project documentation and setup instructions
+Django
 
-Overall Project Structure and Organization
-Architectural Layers
-1. Data Layer (MCP)
+LangChain
 
-GitHub API integration through MCP protocol
-Repository data fetching and processing
-Standardized command interface
+CrewAI
 
-2. Tool Layer (LangChain)
+GitHub MCP Server
 
-Conversion of MCP commands into reusable tools
-LLM integration and prompt management
-Tool orchestration and chaining
+⚙️ Installation
 
-3. Agent Layer (CrewAI)
+Clone the repository
+git clone https://github.com/your-username/your-repo.git cd your-repo
 
-Multi-agent workflow management
-Task distribution and collaboration
-Automated documentation generation logic
+Create a virtual environment
+python -m venv venv source venv/bin/activate # On Windows: venv\Scripts\activate
 
-4. Application Layer (Django)
+Install dependencies
+pip install -r requirements.txt
 
-Web interface and user interaction
-Project management and configuration
-Results presentation and export
+▶️ Usage
 
-Workflow Pattern
+Start MCP Server locally
 
-Local Validation: Test MCP server commands locally using mcp_server.py
-Tool Creation: LangChain transforms MCP commands into modular tools
-Agent Orchestration: CrewAI manages multiple agents working collaboratively
-Web Integration: Django provides the user interface and application logic
+python mcp_server.py
 
-Key Capabilities
+Run CrewAI workflow
 
-Automated Documentation: Generate comprehensive docs for GitHub projects
-Multi-Agent Collaboration: Multiple AI agents work together on complex documentation tasks
-Modular Design: Reusable MCP tools and configurable workflows
-Web Interface: User-friendly Django application for managing documentation projects
-Local Testing: Validate MCP commands and workflows before deployment
+python run_crew.py
 
-Development Workflow
-The project supports a complete development cycle from local testing to production deployment:
+Integrate with Django
 
-Local MCP server validation
-CrewAI workflow development and testing
-Django integration and web interface development
-Production deployment with integrated multi-agent documentation generation
+Add the CrewAI integration to your Django app.
 
+Configure MCP tool endpoints in settings.py.
 
-This architecture provides a robust foundation for automated documentation generation while maintaining modularity and extensibility across all components.
+Run the Django development server:
+
+python manage.py runserver
+
+📂 Project Structure ├── crew/ # CrewAI workflows ├── django_app/ # Django integration ├── mcp/ # GitHub MCP Server commands ├── requirements.txt # Dependencies ├── run_crew.py # Run multi-agent workflow ├── mcp_server.py # Local MCP server runner └── README.md # Documentation
+
+🤝 Contributing
+
+Contributions are welcome! Please fork the repo and submit a pull request.
+
+📜 License
+
+This project is licensed under the MIT License
