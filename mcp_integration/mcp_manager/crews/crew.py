@@ -1,10 +1,4 @@
 from crewai import Crew, Process
-from ..tasks.tasks import analyze_repo_structure_task
-from ..agents.agents import repo_structure_auditor
-from ..tasks.tasks import analyze_repo_structure_task, get_issue_tasks
-from ..agents.agents import repo_structure_auditor, issue_analyst
-from ..tasks.tasks import analyze_repo_structure_task, get_issue_tasks, list_pull_requests_tasks
-from ..agents.agents import repo_structure_auditor, issue_analyst, pull_requests_fetcher_reporter
 from ..tasks.tasks import analyze_repo_structure_task, get_issue_tasks, list_pull_requests_tasks, list_branches_tasks
 from ..agents.agents import repo_structure_auditor, issue_analyst, pull_requests_fetcher_reporter, repo_branch_reporter
 

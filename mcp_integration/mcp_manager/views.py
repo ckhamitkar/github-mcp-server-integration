@@ -50,8 +50,6 @@ def combine_markdown_files(file_paths, output_path, owner, repo_name):
         print(f"Error saving combined markdown: {e}")
         return None
 
-import markdown
-
 # The utility function to change markdown to HTML
 def convert_markdown_to_html(markdown_file_path):
     try:
@@ -83,13 +81,15 @@ def generate_documentation(request):
                     crew = build_crew(owner, repo_name)
                     crew.kickoff()
 
+                    output_dir = os.path.join(settings.BASE_DIR, 'generated_docs')
+                    os.makedirs(output_dir, exist_ok=True)
                     output_files = [
-                        "/usercode/mcp_integration/generated_docs/repo_structure.md",
-                        "/usercode/mcp_integration/generated_docs/report_issues.md",
-                        "/usercode/mcp_integration/generated_docs/pull_requests.md",
-                        "/usercode/mcp_integration/generated_docs/branches.md"
+                        os.path.join(output_dir, "repo_structure.md"),
+                        os.path.join(output_dir, "report_issues.md"),
+                        os.path.join(output_dir, "pull_requests.md"),
+                        os.path.join(output_dir, "branches.md")
                     ]
-                    final_output_path = "/usercode/mcp_integration/generated_docs/summary.md"
+                    final_output_path = os.path.join(output_dir, "summary.md")
                     combined_markdown_path = combine_markdown_files(output_files, final_output_path, owner, repo_name)
 
                     if combined_markdown_path:
@@ -126,50 +126,3 @@ def generate_documentation(request):
 
 
 
-
-# will be deleting the following as these feel unnecessary
-# # 
-# def mcp_interface(request):
-#     # Keep your existing mcp_interface for manual command testing if needed
-#     return render(request, 'mcp_manager/mcp_interface.html')
-
-# def run_mcp_command(request):
-#     # Keep your existing run_mcp_command for manual command testing if needed
-#     output = ""
-#     error = ""
-#     if request.method == 'POST':
-#         command_text = request.POST.get('command', 'get_issue')
-#         owner = request.POST.get('owner', '')
-#         repo = request.POST.get('repo', '')
-#         issue_number_str = request.POST.get('issue_number', '')
-#         issue_number = issue_number_str if issue_number_str else None
-
-#         if GITHUB_TOKEN:
-#             try:
-#                 mcpcurl_path = os.path.join(os.getcwd(), 'mcpcurl')  # Assuming mcpcurl is in the project root
-
-#                 command_list = [mcpcurl_path, '--stdio-server-cmd',
-#                                f'/usr/local/bin/github-mcp-server --toolsets repos,issues,pull_requests,code_security stdio',
-#                                'tools', command_text]
-#                 if command_text == 'get_issue' and owner and repo and issue_number:
-#                     command_list.extend(['--owner', owner, '--repo', repo, '--issue_number', issue_number])
-#                 elif command_text == 'list_issues' and owner and repo:
-#                     command_list.extend(['--owner', owner, '--repo', repo])
-
-#                 env = {'GITHUB_PERSONAL_ACCESS_TOKEN': GITHUB_TOKEN}
-#                 process = subprocess.Popen(command_list, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, env=env, text=True)
-#                 stdout, stderr = process.communicate(timeout=20)
-#                 process.wait()
-#                 output = stdout.strip()
-#                 error = stderr.strip()
-
-#             except FileNotFoundError as e:
-#                 error = f"Error: mcpcurl not found at {os.path.join(os.getcwd(), 'mcpcurl')}. Ensure it's in your project root. {e}"
-#             except subprocess.TimeoutExpired:
-#                 error = "Error: Timeout communicating with mcpcurl."
-#             except Exception as e:
-#                 error = f"An unexpected error occurred: {e}"
-#         else:
-#             error = "Error: GITHUB_PERSONAL_ACCESS_TOKEN is not set in Django settings."
-
-#     return render(request, 'mcp_manager/mcp_interface.html', {'output': output, 'error': error})
